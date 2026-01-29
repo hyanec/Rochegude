@@ -70,11 +70,11 @@
 		}
 	})
 
-	const elem = document.querySelector('.galerie-chambres-box');
-	const filtersElem = document.querySelector('.galerie-chambres-filtres');
+	const elem = document.querySelector('.properties-box');
+	const filtersElem = document.querySelector('.properties-filter');
 	if (elem) {
 		const rdn_events_list = new Isotope(elem, {
-			itemSelector: '.vignette-chambre',
+			itemSelector: '.properties-items',
 			layoutMode: 'masonry'
 		});
 		if (filtersElem) {

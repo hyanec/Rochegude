@@ -60,6 +60,31 @@
       }
 	});
 
+	$('.reviews-carousel').owlCarousel({
+	  center: true,
+      items:1,
+      loop:true,
+      nav: true,
+	  dots:true,
+	  navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+      margin:30,
+      autoplay: true,
+      autoplayTimeout: 6000,
+      responsive:{
+        768:{
+            items:1
+        },
+		992:{
+            items:2,
+            margin:20
+        },
+		1200:{
+			items:2,
+			margin:30
+		}
+      }
+	});
+
 	var width = $(window).width();
 		$(window).resize(function() {
 		if (width > 767 && $(window).width() < 767) {

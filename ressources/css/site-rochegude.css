@@ -396,6 +396,7 @@ Header Style
 .header-area .main-nav {
   background: transparent;
   display: flex;
+  align-items: center;
 }
 
 .header-area .main-nav .logo {
@@ -404,6 +405,7 @@ Header Style
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .header-area .main-nav .logo h1 {
@@ -413,6 +415,7 @@ Header Style
   color: #31694E;
   font-weight: 700;
   letter-spacing: 2px;
+  white-space: nowrap;
 }
 
 .background-header .main-nav .logo h1 {
@@ -421,8 +424,10 @@ Header Style
 
 .header-area .main-nav ul.nav {
   flex-basis: 100%;
-  margin-top: 30px;
+  margin-top: 0px;
+  display: flex;
   justify-content: right;
+  align-items: center;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -439,7 +444,9 @@ Header Style
   padding-left: 10px;
   padding-right: 10px;
   height: 100px;
-  line-height: 100px;
+  line-height: normal;
+  display: flex;
+  align-items: center;
 }
 
 .header-area .main-nav .nav li a {
@@ -448,8 +455,8 @@ Header Style
   padding-right: 20px;
   font-weight: 500;
   font-size: 15px;
-  height: 40px;
-  line-height: 40px;
+  height: auto;
+  line-height: normal;
   text-transform: capitalize;
   color: #31694E;
   -webkit-transition: all 0.4s ease 0s;
@@ -873,12 +880,27 @@ Featured Style
 --------------------------------------------- 
 */
 
+.featured .featured-row {
+  align-items: stretch;
+}
+
+.featured .featured-row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
 .featured .left-image {
   position: relative;
+  flex: 1 1 auto;
 }
 
 .featured .left-image img {
   padding-left: 55px;
+}
+
+.featured .left-image > img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .featured .left-image a {
@@ -912,6 +934,7 @@ Featured Style
   --bs-accordion-bg: #fafafa;
   --bs-accordion-border-color: none;
   border: none !important;
+  flex: 1 1 auto;
 }
 
 .featured .accordion-header {
@@ -947,6 +970,7 @@ Featured Style
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   padding: 35px 30px;
+  flex: 1 1 auto;
 }
 
 .featured .info-table ul li {

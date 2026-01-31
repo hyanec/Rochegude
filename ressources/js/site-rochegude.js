@@ -6,6 +6,12 @@
 	$(window).on('load', function() {
 
         $('#js-preloader').addClass('loaded');
+        
+        // S'assurer que le menu est fermé au chargement sur mobile
+        if($(window).width() < 992) {
+        	$('.main-nav .nav').hide().removeClass('active');
+        	$('.menu-trigger').removeClass('active');
+        }
 
     });
 

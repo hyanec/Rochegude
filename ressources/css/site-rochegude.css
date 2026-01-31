@@ -722,7 +722,7 @@ Header Style
   .header-area .main-nav .nav {
     float: none;
     width: 100%;
-    display: none;
+    display: none !important;
     -webkit-transition: all 0s ease 0s;
     -moz-transition: all 0s ease 0s;
     -o-transition: all 0s ease 0s;

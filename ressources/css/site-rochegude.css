@@ -644,7 +644,6 @@ Header Style
 
 @media (max-width: 767px) {
   .background-header .main-nav {
-    background-color: #BBC863;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
     border-radius: 0px 0px 25px 25px;
     width: 100%;
@@ -652,7 +651,7 @@ Header Style
   .background-header .main-nav .nav,
   .header-area .main-nav .nav {
     background-color: #fff;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15), 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
     border-radius: 0px 0px 25px 25px;
   }
   .background-header .main-nav .nav li a,

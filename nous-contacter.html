@@ -12,6 +12,8 @@
     <!-- Bootstrap core CSS -->
     <link href="bibliotheques/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Flatpickr CSS for calendar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="ressources/css/site-icons.css">
@@ -72,9 +74,9 @@
                     <ul class="nav">
                       <li><a href="index.html">Accueil</a></li>
                       <li><a href="chambres.html">Chambres</a></li>
-                      <li><a href="a-propos.html">A-propos</a></li>
-                      <li><a href="nous-contacter.html" class="active">Nous Contacter</a></li>
-                      <li><a href="#"><i class="fa fa-calendar"></i> Réserver</a></li>
+                      <li><a href="a-propos.html" >A-propos</a></li>
+                      <li><a href="https://www.tripadvisor.fr/Hotel_Review-g187167-d1221860-Reviews-Hotel_Le_Rochegude-Albi_Tarn_Occitanie.html">Consultez notre page sur TripAdvisor</a></li>
+                      <li><a href="nous-contacter.html" class="active" ><i class="fa fa-calendar"></i>Réserver</a></li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -138,8 +140,24 @@
               </div>
               <div class="col-lg-12">
                 <fieldset>
-                  <label for="subject">Sujet</label>
-                  <input type="subject" name="subject" id="subject" placeholder="Sujet..." autocomplete="on" >
+                  <label for="room-type">Type de Chambre</label>
+                  <select name="room-type" id="room-type" required>
+                    <option value="">Sélectionnez un type de chambre...</option>
+                    <option value="double-vue-rue">Chambre Double Vue Rue</option>
+                    <option value="double-vue-parc">Chambre Double Vue Parc</option>
+                    <option value="double-standard">Chambre Double Standard</option>
+                    <option value="double-premium">Chambre Double Premium</option>
+                    <option value="triple">Chambre Triple</option>
+                    <option value="triple-vue-parc">Chambre Triple Vue Parc</option>
+                    <option value="lits-jumeaux">Chambre Lits Jumeaux</option>
+                    <option value="familiale">Chambre Familiale</option>
+                  </select>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="reservation-date">Date de Réservation</label>
+                  <input type="text" name="reservation-date" id="reservation-date" placeholder="Sélectionnez une date..." readonly required>
                 </fieldset>
               </div>
               <div class="col-lg-12">
@@ -175,6 +193,20 @@
     </div>
   </footer>
 
+  <!-- Modal de confirmation -->
+  <div id="confirmation-modal" class="confirmation-modal" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+      <div class="modal-body">
+        <i class="fas fa-check-circle"></i>
+        <h2>Merci!</h2>
+        <p>Votre message a été envoyé avec succès.</p>
+        <p>Nous vous répondrons dès que possible.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
   <script src="bibliotheques/jquery/jquery.min.js"></script>
@@ -183,6 +215,89 @@
   <script src="ressources/js/site-carousel.js"></script>
   <script src="ressources/js/site-compteur.js"></script>
   <script src="ressources/js/site-rochegude.js"></script>
+  
+  <!-- Flatpickr JS for calendar -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+  
+  <script>
+    // Gestion de la soumission du formulaire avec message de confirmation
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Récupérer les données du formulaire
+      const formData = {
+        nom: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        typeChambres: document.getElementById('room-type').value,
+        dateReservation: document.getElementById('reservation-date').value,
+        message: document.getElementById('message').value,
+        dateEnvoi: new Date().toLocaleString('fr-FR')
+      };
+      
+      // Afficher les données dans la console
+      console.log('===== FORMULAIRE ENVOYÉ =====');
+      console.log('Nom:', formData.nom);
+      console.log('Email:', formData.email);
+      console.log('Type de Chambre:', formData.typeChambres);
+      console.log('Date de Réservation:', formData.dateReservation);
+      console.log('Message:', formData.message);
+      console.log('Date d\'Envoi:', formData.dateEnvoi);
+      console.log('===============================');
+      console.log('Objet Complet:', formData);
+      
+      // Afficher la modale de confirmation
+      const modal = document.getElementById('confirmation-modal');
+      modal.style.display = 'block';
+      
+      // Réinitialiser le formulaire
+      this.reset();
+      
+      // Cacher la modale après 5 secondes
+      setTimeout(function() {
+        modal.style.display = 'none';
+      }, 5000);
+    });
+    
+    // Fermer la modale en cliquant sur l'overlay
+    document.getElementById('confirmation-modal').addEventListener('click', function(e) {
+      if (e.target === this || e.target.classList.contains('modal-overlay')) {
+        this.style.display = 'none';
+      }
+    });
+    
+    // Fermer la modale en cliquant sur le bouton X
+    document.getElementById('modal-close-btn').addEventListener('click', function() {
+      document.getElementById('confirmation-modal').style.display = 'none';
+    });
+    
+    // Initialiser le calendrier avec les jours disponibles
+    document.addEventListener('DOMContentLoaded', function() {
+      // Générer des dates disponibles (exemple: tous les jours sauf quelques jours réservés)
+      const today = new Date();
+      const unavailableDates = [
+        new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3),
+        new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7),
+        new Date(today.getFullYear(), today.getMonth(), today.getDate() + 14),
+      ];
+      
+      flatpickr("#reservation-date", {
+        locale: "fr",
+        minDate: "today",
+        dateFormat: "d/m/Y",
+        disable: unavailableDates,
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+          // Mettre en gras les jours disponibles
+          const isDisabled = unavailableDates.some(date => 
+            dayElem.dateObj.toDateString() === date.toDateString()
+          );
+          if (!isDisabled && dayElem.dateObj >= today) {
+            dayElem.style.fontWeight = "bold";
+          }
+        }
+      });
+    });
+  </script>
 
   </body>
 </html>

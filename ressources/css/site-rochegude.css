@@ -644,28 +644,41 @@ Header Style
 
 @media (max-width: 767px) {
   .background-header .main-nav {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
     border-radius: 0px 0px 25px 25px;
     width: 100%;
   }
   .background-header .main-nav .nav,
   .header-area .main-nav .nav {
     background-color: #fff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 25px 25px;
   }
   .background-header .main-nav .nav li a,
   .header-area .main-nav .nav li a {
-    line-height: 50px;
-    height: 50px;
-    font-weight: 400;
+    line-height: 55px;
+    height: 55px;
+    font-weight: 500;
     color: #31694E;
     background-color: #fff;
-     border-radius: 0px 0px 25px 25px;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+  }
+  .background-header .main-nav .nav li a:hover,
+  .header-area .main-nav .nav li a:hover {
+    background-color: #f8f9fa;
+    padding-left: 10px;
   }
   .background-header .main-nav .nav li,
   .header-area .main-nav .nav li {
-    border-top: 1px solid #ddd;
-    background-color: #f1f0fe;
-    height: 50px;
+    border-top: 1px solid #e8e8e8;
+    background-color: #fff;
+    height: 55px;
+    border-radius: 0px;
+  }
+  .background-header .main-nav .nav li:last-child,
+  .header-area .main-nav .nav li:last-child {
     border-radius: 0px 0px 25px 25px;
   }
   .header-area .main-nav .nav {
@@ -674,8 +687,11 @@ Header Style
   }
   .header-area .main-nav .logo {
     position: absolute;
-    left: 30px;
+    left: 20px;
     top: 0px;
+  }
+  .header-area .main-nav .logo h1 {
+    font-size: 24px;
   }
   .background-header .main-nav .logo {
     top: 0px;
@@ -703,8 +719,8 @@ Header Style
   }
   .header-area {
     padding: 0px 15px;
-    height: 80px;
-    box-shadow: none;
+    height: 70px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
     text-align: center;
   }
   .header-area .container {
@@ -715,6 +731,7 @@ Header Style
   }
   .header-area .menu-trigger {
     display: block !important;
+    cursor: pointer;
   }
   .header-area .main-nav {
     overflow: hidden;
@@ -723,14 +740,26 @@ Header Style
     float: none;
     width: 100%;
     display: none;
-    -webkit-transition: all 0s ease 0s;
-    -moz-transition: all 0s ease 0s;
-    -o-transition: all 0s ease 0s;
-    transition: all 0s ease 0s;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
     margin-left: 0px;
+    margin-top: 0px;
   }
   .header-area .main-nav .nav.active {
     display: block;
+    animation: slideDown 0.3s ease;
+  }
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .header-area .main-nav .nav li:first-child {
     border-top: 1px solid #eee;
@@ -1898,7 +1927,7 @@ body {
 
 @media (max-width: 767px) {
   .header-area .main-nav .logo h1 {
-    line-height: 80px !important;
+    line-height: 70px !important;
   }
   .best-deal .tabs-content .nav-link {
     font-size: 14px;
@@ -1916,8 +1945,24 @@ body {
   .properties ul.properties-filter li {
     margin: 5px;
   }
-  .header-area .main-nav .nav li:last-child {
-    display: none;
+  .main-banner .item {
+    padding: 150px 10% 200px 10%;
+  }
+  .main-banner .item h2 {
+    font-size: 28px;
+    line-height: 38px;
+  }
+  .main-banner .item span.category {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+  .section-heading h2 {
+    font-size: 26px;
+    line-height: 36px;
+  }
+  .section-heading p {
+    font-size: 14px;
+    margin-top: 15px;
   }
 }
 

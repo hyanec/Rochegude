@@ -644,13 +644,13 @@ Header Style
 
 @media (max-width: 767px) {
   .background-header .main-nav {
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 20px 5px 20px rgba(0, 0, 0, 0.1);
     border-radius: 0px 0px 25px 25px;
     width: 100%;
   }
   .background-header .main-nav .nav,
   .header-area .main-nav .nav {
-    background-color: #BBC863;
+    background-color: #fff;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
     border-radius: 0px 0px 25px 25px;
   }
@@ -659,21 +659,23 @@ Header Style
     line-height: 55px;
     height: 55px;
     font-weight: 500;
-    color: #fff;
-    background-color: #BBC863;
+    color: #31694E;
+    background-color: #fff;
     border-radius: 0px;
     transition: all 0.3s ease;
     font-size: 15px;
+    padding-right: 38px;
   }
   .background-header .main-nav .nav li a:hover,
   .header-area .main-nav .nav li a:hover {
-    background-color: #a8b556;
+    background-color: #f8f9fa;
     padding-left: 10px;
+    padding-right: 48px;
   }
   .background-header .main-nav .nav li,
   .header-area .main-nav .nav li {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: #BBC863;
+    border-top: 1px solid #e8e8e8;
+    background-color: #fff;
     height: 55px;
     border-radius: 0px;
   }
